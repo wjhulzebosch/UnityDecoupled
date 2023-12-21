@@ -12,7 +12,7 @@ public class SpriteController : MonoBehaviour
     {
         // This spriteController has to be informed about new objects in the world. Register with the AntManager
         // so we can be informed when a new ant is created.
-        GameController.Instance.GetAntManager().RegisterCallback(OnAntCreated);
+        Game.Instance.AntManager.RegisterCallback(OnAntCreated);
     }
 
     private void OnAntCreated(Ant ant)

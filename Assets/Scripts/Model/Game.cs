@@ -2,14 +2,21 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class World
+public class Game
 {
+    public static Game Instance;
     bool antCreated = false;
     List<Ant> ants;
 
-    public World()
+    public AntManager AntManager;
+
+    public Game()
     {
+        AntManager = new AntManager();
+        
         ants = new List<Ant>();
+        
+        Instance = this;
     }
 
 
@@ -21,7 +28,7 @@ public class World
         if(antCreated == false)
         {
             // Create a new ant
-            ants.Add(GameController.Instance.GetAntManager().CreateAnt());
+            ants.Add(AntManager.CreateAnt());
             antCreated = true;
         }
         

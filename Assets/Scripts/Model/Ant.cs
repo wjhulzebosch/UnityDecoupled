@@ -12,6 +12,7 @@ public class Ant
 
     internal void Update(float deltaTime)
     {
+        Debug.Log("Ant is updating");
         // Slowly move up
         position.y += 0.5f * deltaTime;
         if(onAntUpdated != null)
