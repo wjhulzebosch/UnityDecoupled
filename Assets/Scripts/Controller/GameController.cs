@@ -6,7 +6,6 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance;
     private Game world;
-    private AntManager antManager;
 
     private void Awake()
     {
