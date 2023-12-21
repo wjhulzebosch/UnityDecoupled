@@ -1,18 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ant : MonoBehaviour
+public class Ant
 {
-    // Start is called before the first frame update
-    void Start()
+    public Vector2 position;
+
+    public Action<Ant>? onAntUpdated;
+
+
+    internal void Update(float deltaTime)
     {
-        
+        // Slowly move up
+        position.y += 0.5f * deltaTime;
+        if(onAntUpdated != null)
+        {
+            onAntUpdated(this);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    #region Callbacks
+    public void RegisterCallback(Action<Ant> callback)
     {
-        
+        onAntUpdated += callback;
     }
+
+    public void UnregisterCallback(Action<Ant> callback)
+    {
+        onAntUpdated -= callback;
+    }
+    #endregion
 }
